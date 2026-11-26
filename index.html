@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ANGKATAN SERASI — Digital Yearbook Kelas 9 SMP</title>
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            indigoBase: '#161d38',
+            indigoSurface: '#1f284d',
+            skyGlow: '#38bdf8',
+            violetGlow: '#a78bfa',
+            pinkGlow: '#f472b6',
+          },
+          animation: {
+            'float': 'float 5s ease-in-out infinite',
+            'fade-slide': 'fadeSlide 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            fadeSlide: {
+              '0%': { opacity: '0', transform: 'translateY(14px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-grad-1: #161d38;
+      --bg-grad-2: #222c56;
+      --bg-grad-3: #1b254b;
+      --accent-sky: #38bdf8;
+      --accent-violet: #a78bfa;
+      --accent-pink: #f472b6;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 50%, var(--bg-grad-3) 100%);
+      background-attachment: fixed;
+      color: #f8fafc;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Custom Background Image Layer */
+    #custom-bg-layer {
+      position: fixed;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+    #custom-bg-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(22, 29, 56, 0.72), rgba(34, 44, 86, 0.65));
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+    /* Ambient Luminous Blobs (Brighter Twilight Palette) */
+    .mesh-blob {
+      position: fixed;
+      border-radius: 9999px;
+      filter: blur(110px);
+      opacity: 0.36;
+      pointer-events: none;
+      z-index: 0;
+      transition: transform 0.8s ease-out;
+    }
+
+    /* Luminous Glassmorphism Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 10px 35px rgba(10, 15, 35, 0.28);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease-out, background 0.3s ease;
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.11);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 14px 42px rgba(56, 189, 248, 0.18), 0 0 24px rgba(167, 139, 250, 0.2);
+    }
+
+    /* Sidebar Glass Panel */
+    .glass-sidebar {
+      background: rgba(22, 29, 58, 0.78);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-right: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 8px 0 32px rgba(10, 15, 35, 0.25);
+    }
+
+    .text-gradient-serasi {
+      background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 52%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-luminous {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(167, 139, 250, 0.32));
+      border: 1px solid rgba(56, 189, 248, 0.55);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.22);
+      transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn-luminous:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.42), rgba(167, 139, 250, 0.45));
+      border-color: #38bdf8;
+      box-shadow: 0 6px 28px rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Sidebar Tab Button States */
+    .sidebar-tab {
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .sidebar-tab.active {
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.24), rgba(167, 139, 250, 0.16));
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 18px rgba(56, 189, 248, 0.18);
+    }
+    .sidebar-tab.active .tab-icon-box {
+      background: linear-gradient(135deg, #38bdf8, #a78bfa);
+      color: #0f172a;
+    }
+
+    /* 3D Flip Card System */
+    .flip-perspective {
+      perspective: 1200px;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.68s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-perspective.is-flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1.25rem;
+      overflow: hidden;
+    }
+    .flip-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Masonry Gallery Layout */
+    .masonry-grid {
+      column-count: 1;
+      column-gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .masonry-grid { column-count: 2; }
+    }
+    @media (min-width: 1280px) {
+      .masonry-grid { column-count: 3; }
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Music Equalizer Bars */
+    .eq-bar {
+      width: 3px;
+      border-radius: 9999px;
+      background: linear-gradient(to top, #38bdf8, #f472b6);
+      animation: eqBounce 0.85s ease-in-out infinite alternate;
+      animation-play-state: paused;
+    }
+    .is-playing .eq-bar {
+      animation-play-state: running;
+    }
+    .eq-bar:nth-child(1) { height: 10px; animation-delay: 0.1s; }
+    .eq-bar:nth-child(2) { height: 18px; animation-delay: 0.3s; }
+    .eq-bar:nth-child(3) { height: 14px; animation-delay: 0.5s; }
+    .eq-bar:nth-child(4) { height: 20px; animation-delay: 0.2s; }
+
+    @keyframes eqBounce {
+      0% { transform: scaleY(0.35); }
+      100% { transform: scaleY(1.1); }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(22, 29, 56, 0.5);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(167, 139, 250, 0.5);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.8);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-skyGlow/30 selection:text-white min-h-screen flex flex-col lg:flex-row">
+
+  <!-- Custom Uploaded Background Layer + Interactive Particles -->
+  <div id="custom-bg-layer"></div>
+  <div id="custom-bg-overlay"></div>
+  <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <div id="blob-1" class="mesh-blob w-[440px] h-[440px] bg-skyGlow/35 -top-24 left-48"></div>
+  <div id="blob-2" class="mesh-blob w-[480px] h-[480px] bg-violetGlow/35 top-1/3 -right-24"></div>
+  <div id="blob-3" class="mesh-blob w-[420px] h-[420px] bg-pinkGlow/30 bottom-0 left-1/3"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-4 right-4 z-[9999] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none"></div>
+
+  <!-- ==================== MOBILE TOP HEADER & DRAWER TRIGGER ==================== -->
+  <header class="lg:hidden sticky top-0 z-40 glass-sidebar border-b border-white/15 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-skyGlow via-violetGlow to-pinkGlow p-[1.5px] shrink-0 overflow-hidden">
+        <div id="mobile-logo-box" class="w-full h-full bg-indigoBase rounded-[10px] flex items-center justify-center overflow-hidden">
+          <i class="fa-solid fa-sparkles text-skyGlow text-sm"></i>
+        </div>
+      </div>
+      <div>
+        <span id="mobile-header-title" class="font-display font-bold text-base tracking-wide text-white block leading-none">SERASI</span>
+        <span id="mobile-header-sub" class="text-[10px] font-semibold tracking-widest text-skyGlow uppercase">Kelas 9 SMP</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-full bg-emerald-400/15 border border-emerald-400/35 text-emerald-200 text-[10px] font-semibold flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
+        <span>SG Cloud</span>
+      </span>
+      <button id="mobile-drawer-btn" aria-label="Buka Menu" class="p-2 rounded-xl bg-white/10 border border-white/15 text-white hover:text-skyGlow">
+        <i class="fa-solid fa-bars text-base"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- ==================== LEFT SIDEBAR NAVIGATION (TAB SWITCHER) ==================== -->
+  <aside id="left-sidebar" class="fixed lg:sticky top-0 left-0 z-50 h-screen w-72 shrink-0 glass-sidebar flex flex-col justify-between p-5 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-out">
+    <div>
+      <!-- Batch Identity Header in Sidebar -->
+      <div class="flex items-center justify-between lg:justify-start gap-3.5 pb-5 mb-5 border-b border-white/15">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-skyGlow via-violetGlow to-pinkGlow p-[2px] shadow-lg shadow-skyGlow/20 shrink-0">
+            <div id="sidebar-logo-box" class="w-full h-full bg-indigoBase rounded-[14px] flex items-center justify-center overflow-hidden">
+              <i class="fa-solid fa-sparkles text-skyGlow text-xl"></i>
+            </div>
+          </div>
+          <div class="min-w-0">
+            <h1 id="sidebar-batch-name" class="font-display font-extrabold text-xl tracking-wider text-white truncate">SERASI</h1>
+            <p id="sidebar-batch-sub" class="text-xs font-medium text-skyGlow truncate">Angkatan Kelas 9 SMP</p>
+          </div>
+        </div>
+        <button id="close-drawer-btn" class="lg:hidden p-2 rounded-xl bg-white/10 text-slate-200">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Cloud Region Pill -->
+      <div class="mb-5 px-3.5 py-2 rounded-xl bg-emerald-400/10 border border-emerald-400/30 flex items-center justify-between text-xs text-emerald-200">
+        <span class="flex items-center gap-2 font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+          <span id="sync-status-label">SG Cloud Live</span>
+        </span>
+        <span class="text-[10px] opacity-80 font-mono">asia-southeast1</span>
+      </div>
+
+      <!-- Sidebar Tab Navigation Menu -->
+      <div class="text-[11px] font-bold uppercase tracking-widest text-slate-300/80 px-2 mb-2.5">Menu Utama</div>
+      <nav class="space-y-2" id="sidebar-nav-list">
+        <button data-tab="view-beranda" class="sidebar-tab active w-full flex items-center gap-3.5 px-3.5 py-3 rounded-2xl text-sm font-semibold text-slate-200 hover:bg-white/10 text-left">
+          <span class="tab-icon-box w-8 h-8 rounded-xl bg-white/10 text-skyGlow flex items-center justify-center shrink-0 transition">
+            <i class="fa-solid fa-house-chimney text-xs"></i>
+          </span>
+          <span>Beranda</span>
+        </button>
+
+        <button data-tab="view-profil" class="sidebar-tab w-full flex items-center gap-3.5 px-3.5 py-3 rounded-2xl text-sm font-semibold text-slate-200 hover:bg-white/10 text-left">
+          <span class="tab-icon-box w-8 h-8 rounded-xl bg-white/10 text-violetGlow flex items-center justify-center shrink-0 transition">
+            <i class="fa-solid fa-id-card text-xs"></i>
+          </span>
+          <span>Profil & Yearbook</span>
+        </button>
+
+        <button data-tab="view-galeri" class="sidebar-tab w-full flex items-center gap-3.5 px-3.5 py-3 rounded-2xl text-sm font-semibold text-slate-200 hover:bg-white/10 text-left">
+          <span class="tab-icon-box w-8 h-8 rounded-xl bg-white/10 text-pinkGlow flex items-center justify-center shrink-0 transition">
+            <i class="fa-solid fa-photo-film text-xs"></i>
+          </span>
+          <span>Galeri & Video Vault</span>
+        </button>
+
+        <button data-tab="view-acara" class="sidebar-tab w-full flex items-center gap-3.5 px-3.5 py-3 rounded-2xl text-sm font-semibold text-slate-200 hover:bg-white/10 text-left">
+          <span class="tab-icon-box w-8 h-8 rounded-xl bg-white/10 text-amber-300 flex items-center justify-center shrink-0 transition">
+            <i class="fa-solid fa-trophy text-xs"></i>
+          </span>
+          <span>Acara & Wall of Fame</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Bottom Sidebar: Social Media Links & Secret Admin Trigger -->
+    <div class="pt-4 border-t border-white/15 space-y-3">
+      <div class="grid grid-cols-3 gap-2">
+        <a id="link-ig-batch" href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram Angkatan" class="py-2 rounded-xl bg-white/10 hover:bg-pinkGlow/25 border border-white/15 text-pinkGlow flex items-center justify-center transition">
+          <i class="fa-brands fa-instagram text-sm"></i>
+        </a>
+        <a id="link-tiktok-batch" href="https://tiktok.com" target="_blank" rel="noopener noreferrer" title="TikTok Angkatan" class="py-2 rounded-xl bg-white/10 hover:bg-skyGlow/25 border border-white/15 text-skyGlow flex items-center justify-center transition">
+          <i class="fa-brands fa-tiktok text-sm"></i>
+        </a>
+        <a id="link-spotify-batch" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" title="Playlist Spotify" class="py-2 rounded-xl bg-white/10 hover:bg-emerald-400/25 border border-white/15 text-emerald-300 flex items-center justify-center transition">
+          <i class="fa-brands fa-spotify text-sm"></i>
+        </a>
+      </div>
+
+      <div class="flex items-center justify-between text-[11px] text-slate-300/75 px-1">
+        <span>© 2026 <strong id="footer-copy-name" class="text-white">SERASI</strong></span>
+        <button
+          id="secret-admin-trigger"
+          title="Pengaturan Admin"
+          aria-label="Pengaturan Admin"
+          class="w-7 h-7 rounded-lg bg-white/5 hover:bg-violetGlow/30 border border-white/10 hover:border-violetGlow text-slate-300 hover:text-white flex items-center justify-center transition"
+        >
+          <i class="fa-solid fa-lock text-[11px]"></i>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN WORKSPACE AREA (TAB VIEWS) ==================== -->
+  <main class="relative z-10 flex-1 min-w-0 p-4 sm:p-6 lg:p-10 pb-28 lg:pb-12 max-w-6xl mx-auto w-full">
+
+    <!-- ==================== TAB 1: BERANDA ==================== -->
+    <section id="view-beranda" class="tab-view animate-fade-slide space-y-8">
+      <!-- Hero Glass Banner -->
+      <div class="glass-card rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-skyGlow/25 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-pinkGlow/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row items-center gap-7 lg:gap-10 relative z-10">
+          <!-- Customizable Batch Emblem Logo -->
+          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-gradient-to-br from-skyGlow via-violetGlow to-pinkGlow p-[3px] shadow-2xl shadow-skyGlow/25 shrink-0 animate-float">
+            <div id="hero-logo-box" class="w-full h-full bg-indigoBase/95 rounded-[21px] flex items-center justify-center overflow-hidden">
+              <i class="fa-solid fa-sparkles text-5xl text-skyGlow"></i>
+            </div>
+          </div>
+
+          <div class="text-center md:text-left flex-1">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-widest uppercase text-skyGlow mb-3">
+              <span class="w-2 h-2 rounded-full bg-skyGlow"></span>
+              <span id="hero-subtitle-badge">Digital Yearbook • Kelas 9 SMP</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
+              ANGKATAN <span id="hero-batch-title" class="text-gradient-serasi">SERASI</span>
+            </h2>
+
+            <p id="hero-philosophy-text" class="text-sm sm:text-base lg:text-lg text-slate-200/90 leading-relaxed mb-6 max-w-2xl">
+              "Selaras dalam rasa, seirama dalam langkah, satu keluarga besar Kelas 9 yang merangkai kenangan putih biru menjadi cerita abadi."
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
+              <button onclick="window.switchTab('view-profil')" class="tilt-card btn-luminous px-6 py-3 rounded-2xl text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-users text-skyGlow"></i>
+                <span>Lihat Profil Kelas 9</span>
+              </button>
+              <button onclick="window.switchTab('view-galeri')" class="tilt-card glass-card px-6 py-3 rounded-2xl text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-film text-pinkGlow"></i>
+                <span>Galeri & Video Vault</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Graduation Countdown Timer -->
+      <div class="tilt-card glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-pinkGlow"><i class="fa-solid fa-hourglass-half mr-1.5"></i>Hitung Mundur Perpisahan</span>
+            <h3 id="countdown-heading" class="text-xl sm:text-2xl font-extrabold text-white mt-0.5">Malam Pelepasan Angkatan SERASI</h3>
+          </div>
+          <span id="countdown-date-badge" class="self-start sm:self-auto text-xs font-semibold px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-skyGlow">
+            Menghitung waktu...
+          </span>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3 sm:gap-5 text-center">
+          <div class="bg-indigoBase/65 border border-white/15 rounded-2xl p-3.5 sm:p-5">
+            <div id="cd-days" class="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-skyGlow">00</div>
+            <div class="text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 mt-1">Hari</div>
+          </div>
+          <div class="bg-indigoBase/65 border border-white/15 rounded-2xl p-3.5 sm:p-5">
+            <div id="cd-hours" class="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white">00</div>
+            <div class="text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 mt-1">Jam</div>
+          </div>
+          <div class="bg-indigoBase/65 border border-white/15 rounded-2xl p-3.5 sm:p-5">
+            <div id="cd-minutes" class="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-violetGlow">00</div>
+            <div class="text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 mt-1">Menit</div>
+          </div>
+          <div class="bg-indigoBase/65 border border-white/15 rounded-2xl p-3.5 sm:p-5">
+            <div id="cd-seconds" class="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-pinkGlow">00</div>
+            <div class="text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 mt-1">Detik</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Batch Statistics -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div class="tilt-card glass-card rounded-2xl p-5 text-center">
+          <div class="w-11 h-11 mx-auto mb-3 rounded-xl bg-skyGlow/20 border border-skyGlow/40 flex items-center justify-center text-skyGlow">
+            <i class="fa-solid fa-user-graduate text-lg"></i>
+          </div>
+          <div id="stat-students-count" class="stat-counter font-display text-3xl sm:text-4xl font-extrabold text-white" data-target="32">0</div>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">Siswa Kelas 9</p>
+        </div>
+
+        <div class="tilt-card glass-card rounded-2xl p-5 text-center">
+          <div class="w-11 h-11 mx-auto mb-3 rounded-xl bg-violetGlow/20 border border-violetGlow/40 flex items-center justify-center text-violetGlow">
+            <i class="fa-solid fa-heart text-lg"></i>
+          </div>
+          <div class="font-display text-3xl sm:text-4xl font-extrabold text-white">1</div>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">Kelas Tunggal Solid</p>
+        </div>
+
+        <div class="tilt-card glass-card rounded-2xl p-5 text-center">
+          <div class="w-11 h-11 mx-auto mb-3 rounded-xl bg-pinkGlow/20 border border-pinkGlow/40 flex items-center justify-center text-pinkGlow">
+            <i class="fa-solid fa-calendar-days text-lg"></i>
+          </div>
+          <div class="stat-counter font-display text-3xl sm:text-4xl font-extrabold text-white" data-target="1095">0</div>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">Hari Kebersamaan</p>
+        </div>
+
+        <div class="tilt-card glass-card rounded-2xl p-5 text-center">
+          <div class="w-11 h-11 mx-auto mb-3 rounded-xl bg-emerald-400/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300">
+            <i class="fa-solid fa-infinity text-lg"></i>
+          </div>
+          <div class="font-display text-3xl sm:text-4xl font-extrabold text-gradient-serasi">∞</div>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">Cerita & Kenangan</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: PROFIL & YEARBOOK ==================== -->
+    <section id="view-profil" class="tab-view hidden animate-fade-slide space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-skyGlow">Keluarga Besar Kelas 9</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Direktori Profil & Yearbook</h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">Klik pada kartu profil untuk membalik kartu (3D Flip) dan melihat quotes, cita-cita, serta akun sosial media.</p>
+        </div>
+      </div>
+
+      <!-- Search Bar & Single-Class Filters (Semua / Wali Kelas / Siswa Kelas 9) -->
+      <div class="glass-card rounded-2xl p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3.5">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-300"></i>
+          <input
+            type="text"
+            id="student-search"
+            placeholder="Cari nama, panggilan, quotes, atau cita-cita..."
+            class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-indigoBase/75 border border-white/15 text-sm text-white placeholder-slate-300/70 focus:outline-none focus:border-skyGlow transition"
+          />
+        </div>
+
+        <div id="role-filters" class="flex flex-wrap items-center gap-2">
+          <button data-role="ALL" class="role-filter-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-skyGlow text-slate-950 shadow-lg shadow-skyGlow/25 transition">
+            Semua
+          </button>
+          <button data-role="Wali Kelas" class="role-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/15 transition">
+            Wali Kelas
+          </button>
+          <button data-role="Siswa Kelas 9" class="role-filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/15 transition">
+            Siswa Kelas 9
+          </button>
+        </div>
+      </div>
+
+      <!-- Flip Cards Grid -->
+      <div id="profiles-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- Populated dynamically -->
+      </div>
+
+      <div id="profiles-empty" class="hidden glass-card rounded-3xl p-12 text-center">
+        <i class="fa-solid fa-user-astronaut text-4xl text-violetGlow mb-3"></i>
+        <h3 class="text-lg font-bold text-white">Profil tidak ditemukan</h3>
+        <p class="text-sm text-slate-300 mt-1">Coba gunakan kata kunci pencarian atau filter kategori lainnya.</p>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: GALERI & VIDEO VAULT ==================== -->
+    <section id="view-galeri" class="tab-view hidden animate-fade-slide space-y-10">
+      <!-- Video Player Multi-Sumber -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-pinkGlow"><i class="fa-solid fa-clapperboard mr-1.5"></i>Cinema & Aftermovie</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5">Video Vault Angkatan</h2>
+          </div>
+          <label class="cursor-pointer btn-luminous px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-upload text-skyGlow"></i>
+            <span>Putar File Video Lokal</span>
+            <input type="file" id="quick-local-video" accept="video/*" class="hidden" />
+          </label>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div class="xl:col-span-2 glass-card rounded-3xl p-4 sm:p-5">
+            <div id="video-player-wrapper" class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 border border-white/15 shadow-xl">
+              <!-- Multi-source player rendered here -->
+            </div>
+            <div class="mt-4">
+              <div class="flex items-center gap-2">
+                <span id="active-video-badge" class="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase bg-pinkGlow/25 text-pinkGlow border border-pinkGlow/40">YOUTUBE</span>
+                <h3 id="active-video-title" class="text-base sm:text-lg font-bold text-white">Aftermovie Angkatan SERASI</h3>
+              </div>
+              <p id="active-video-desc" class="text-xs sm:text-sm text-slate-300 mt-1">Rekap perjalanan penuh kenangan Kelas 9 SMP.</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl p-5 flex flex-col">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3 flex items-center justify-between">
+              <span><i class="fa-solid fa-list-ul text-skyGlow mr-2"></i>Daftar Video</span>
+              <span id="video-count-badge" class="text-slate-300">0 Video</span>
+            </h4>
+            <div id="video-playlist" class="space-y-2.5 overflow-y-auto max-h-[320px] pr-1 flex-1">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Gallery Masonry -->
+      <div class="space-y-5">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-skyGlow">Captured Moments</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5">Galeri Foto Kenangan</h2>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div id="gallery-filters" class="flex flex-wrap gap-1.5">
+              <button data-cat="ALL" class="gal-filter-btn active px-3.5 py-2 rounded-xl text-xs font-bold bg-violetGlow text-slate-950 shadow-lg shadow-violetGlow/25 transition">Semua</button>
+              <button data-cat="MPLS" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/15 transition">MPLS</button>
+              <button data-cat="Study Tour" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/15 transition">Study Tour</button>
+              <button data-cat="Classmeeting" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/15 transition">Classmeeting</button>
+              <button data-cat="Perpisahan" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/15 border border-white/15 transition">Perpisahan</button>
+            </div>
+
+            <a id="gdrive-btn" href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="tilt-card px-4 py-2 rounded-xl text-xs font-bold bg-emerald-400/20 text-emerald-200 border border-emerald-400/40 hover:bg-emerald-400/30 flex items-center gap-2 transition">
+              <i class="fa-brands fa-google-drive"></i>
+              <span>Folder Google Drive HD</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="gallery-masonry" class="masonry-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: ACARA & WALL OF FAME ==================== -->
+    <section id="view-acara" class="tab-view hidden animate-fade-slide space-y-10">
+      <!-- Farewell Event Info Card -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+          <div class="lg:col-span-2">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-skyGlow/20 text-skyGlow border border-skyGlow/40 mb-3">
+              <i class="fa-solid fa-sparkles mr-1.5"></i>Informasi Acara Perpisahan
+            </span>
+            <h2 id="event-title-display" class="text-2xl sm:text-4xl font-extrabold text-white mb-2">SERASI Graduation & Farewell Night</h2>
+            <p id="event-desc-display" class="text-slate-200/90 text-sm leading-relaxed mb-5">
+              Perayaan malam pelepasan siswa-siswi Kelas 9 Angkatan SERASI. Mari rayakan kebersamaan indah kita sebelum melangkah ke jenjang berikutnya!
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              <div class="bg-indigoBase/70 border border-white/15 rounded-2xl p-3.5">
+                <div class="text-skyGlow text-[11px] font-bold uppercase mb-1"><i class="fa-regular fa-calendar mr-1.5"></i>Jadwal Acara</div>
+                <div id="event-date-text" class="text-xs sm:text-sm font-semibold text-white">Sabtu, 20 Juni 2026 • 18:30 WIB</div>
+              </div>
+              <div class="bg-indigoBase/70 border border-white/15 rounded-2xl p-3.5">
+                <div class="text-violetGlow text-[11px] font-bold uppercase mb-1"><i class="fa-solid fa-location-dot mr-1.5"></i>Lokasi Venue</div>
+                <div id="event-venue-text" class="text-xs sm:text-sm font-semibold text-white">Grand Ballroom Hotel Horizon</div>
+              </div>
+              <div class="bg-indigoBase/70 border border-white/15 rounded-2xl p-3.5">
+                <div class="text-pinkGlow text-[11px] font-bold uppercase mb-1"><i class="fa-solid fa-shirt mr-1.5"></i>Dresscode</div>
+                <div id="event-dresscode-text" class="text-xs sm:text-sm font-semibold text-white">Pastel & Midnight Formal</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-skyGlow/20 via-violetGlow/20 to-pinkGlow/20 border border-white/20 rounded-2xl p-5 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-indigoBase/90 border border-skyGlow/45 flex items-center justify-center text-skyGlow text-xl mb-3">
+              <i class="fa-solid fa-ticket"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">E-Ticket Angkatan</h3>
+            <p class="text-xs text-slate-200 mt-1 mb-3">Tunjukkan pass digital ini saat registrasi kehadiran di lokasi acara.</p>
+            <div class="py-2 px-3 rounded-xl bg-indigoBase/85 border border-dashed border-skyGlow/50 font-mono text-xs text-skyGlow tracking-widest">
+              #SERASI-KELAS9-VIP
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Angkatan Awards Grid -->
+      <div class="space-y-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-300"><i class="fa-solid fa-trophy mr-1.5"></i>Nominasi Ikonik</span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5">Angkatan Awards</h3>
+        </div>
+        <div id="awards-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Interactive Wall of Fame / Menfess -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5">
+          <div class="glass-card rounded-3xl p-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-violetGlow"><i class="fa-solid fa-paper-plane mr-1.5"></i>Live Wall of Fame</span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1 mb-2">Kirim Ucapan & Menfess</h3>
+            <p class="text-xs text-slate-300 mb-4">Tulis pesan perpisahan atau salam untuk teman dan wali kelas. Tersimpan real-time lintas perangkat!</p>
+
+            <form id="menfess-form" class="space-y-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-200 mb-1">Dari (Nama / Inisial)</label>
+                <input type="text" id="menfess-from" required maxlength="40" placeholder="Contoh: Sahabat Sebangku" class="w-full px-3.5 py-2.5 rounded-xl bg-indigoBase/80 border border-white/15 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-skyGlow" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-200 mb-1">Untuk (Tujuan)</label>
+                <input type="text" id="menfess-to" required maxlength="40" placeholder="Contoh: Seluruh Kelas 9 SERASI" class="w-full px-3.5 py-2.5 rounded-xl bg-indigoBase/80 border border-white/15 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-skyGlow" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-200 mb-1">Pesan Perpisahan</label>
+                <textarea id="menfess-msg" required rows="3" maxlength="280" placeholder="Sukses terus di SMA nanti ya, jangan pernah lupakan momen kelas 9!" class="w-full px-3.5 py-2.5 rounded-xl bg-indigoBase/80 border border-white/15 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-skyGlow resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full btn-luminous py-3 rounded-xl font-bold text-sm text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-skyGlow"></i>
+                <span>Tempel ke Wall of Fame</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-comments text-pinkGlow"></i>
+              <span>Papan Ucapan Angkatan</span>
+            </h3>
+            <span id="menfess-count" class="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-200">0 Pesan</span>
+          </div>
+
+          <div id="menfess-list" class="space-y-3.5 max-h-[540px] overflow-y-auto pr-1">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FLOATING MINI MUSIC PLAYER (BOTTOM RIGHT) ==================== -->
+  <div id="floating-player" class="fixed bottom-4 right-4 z-40 glass-card rounded-2xl p-2.5 pr-4 border-skyGlow/40 flex items-center gap-3 shadow-2xl max-w-[275px]">
+    <button
+      id="music-toggle-btn"
+      aria-label="Putar atau Jeda Lagu Tema"
+      class="w-10 h-10 rounded-xl bg-gradient-to-br from-skyGlow to-violetGlow text-slate-950 font-bold flex items-center justify-center shrink-0 hover:scale-105 transition shadow-lg shadow-skyGlow/25"
+    >
+      <i id="music-icon" class="fa-solid fa-play text-sm ml-0.5"></i>
+    </button>
+
+    <div class="min-w-0 flex-1">
+      <div class="flex items-center gap-2">
+        <span id="player-song-title" class="text-xs font-bold text-white truncate">Serasi Anthem '26</span>
+        <div id="music-eq" class="flex items-end gap-[2px] h-3.5 shrink-0">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </div>
+      </div>
+      <p id="music-status-text" class="text-[11px] text-slate-300 truncate">Klik Play • Lagu Tema Angkatan</p>
+    </div>
+  </div>
+
+  <!-- ==================== PHOTO LIGHTBOX MODAL ==================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-xl p-4 sm:p-8 flex items-center justify-center">
+    <button id="lightbox-close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/15 hover:bg-pinkGlow text-white flex items-center justify-center transition">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+    <div class="max-w-4xl w-full text-center">
+      <img id="lightbox-img" src="" alt="Preview" class="max-h-[75vh] mx-auto rounded-2xl border border-white/20 shadow-2xl object-contain" />
+      <div class="mt-4">
+        <span id="lightbox-cat" class="px-3 py-1 rounded-full text-xs font-bold bg-violetGlow/30 text-violetGlow border border-violetGlow/40">MPLS</span>
+        <h4 id="lightbox-title" class="text-lg sm:text-xl font-bold text-white mt-2">Judul Foto</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECRET ADMIN PASSWORD MODAL ==================== -->
+  <div id="admin-login-modal" class="fixed inset-0 z-[90] hidden bg-slate-950/80 backdrop-blur-md p-4 flex items-center justify-center">
+    <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-md w-full border-violetGlow/50 relative bg-indigoSurface/95">
+      <button id="close-login-modal" class="absolute top-4 right-4 w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="w-12 h-12 rounded-2xl bg-violetGlow/25 border border-violetGlow/50 text-violetGlow flex items-center justify-center text-xl mb-4">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h3 class="text-2xl font-extrabold text-white">Admin Command Center</h3>
+      <p class="text-xs sm:text-sm text-slate-300 mt-1 mb-5">Masukkan kata sandi khusus untuk membuka seluruh pengaturan Yearbook & Cloud Database Server Singapura.</p>
+      <form id="admin-login-form" class="space-y-4">
+        <input
+          type="password"
+          id="admin-password-input"
+          required
+          placeholder="Masukkan kata sandi..."
+          class="w-full px-4 py-3 rounded-xl bg-indigoBase border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-skyGlow"
+        />
+        <button type="submit" class="w-full btn-luminous py-3 rounded-xl font-bold text-white">
+          <i class="fa-solid fa-unlock-keyhole mr-2 text-skyGlow"></i>Masuk Dashboard Admin
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== FULL ADMIN DASHBOARD MODAL ==================== -->
+  <div id="admin-dashboard-modal" class="fixed inset-0 z-[95] hidden bg-slate-950/85 backdrop-blur-xl p-2 sm:p-6 overflow-y-auto">
+    <div class="max-w-5xl mx-auto glass-card rounded-3xl border-skyGlow/40 bg-indigoSurface/95 overflow-hidden my-3">
+      <!-- Admin Header -->
+      <div class="p-5 sm:p-6 border-b border-white/15 flex flex-wrap items-center justify-between gap-4 bg-indigoBase/85">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-skyGlow/20 border border-skyGlow/45 text-skyGlow flex items-center justify-center">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-white">Pusat Pengaturan Yearbook</h3>
+            <p class="text-xs text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-server"></i>
+              <span>Cloud Database Aktif • Region: Singapore (asia-southeast1)</span>
+            </p>
+          </div>
+        </div>
+        <button id="close-admin-dashboard" class="px-4 py-2 rounded-xl bg-rose-500/25 hover:bg-rose-500/35 border border-rose-400/50 text-rose-200 text-xs font-bold flex items-center gap-2">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Tutup Panel</span>
+        </button>
+      </div>
+
+      <!-- Admin Navigation Tabs (6 Comprehensive Sections) -->
+      <div class="flex overflow-x-auto border-b border-white/15 bg-indigoBase/60 px-4 pt-3 gap-1.5">
+        <button data-admin-tab="tab-identity" class="admin-tab-btn active px-3.5 py-2.5 rounded-t-xl text-xs font-bold bg-skyGlow/20 text-skyGlow border-b-2 border-skyGlow whitespace-nowrap">
+          <i class="fa-solid fa-palette mr-1.5"></i>Identitas, Logo & Background
+        </button>
+        <button data-admin-tab="tab-students" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-300 hover:text-white whitespace-nowrap">
+          <i class="fa-solid fa-users mr-1.5"></i>Siswa & Wali Kelas
+        </button>
+        <button data-admin-tab="tab-gallery" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-300 hover:text-white whitespace-nowrap">
+          <i class="fa-solid fa-images mr-1.5"></i>Galeri Foto
+        </button>
+        <button data-admin-tab="tab-videos" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-300 hover:text-white whitespace-nowrap">
+          <i class="fa-solid fa-video mr-1.5"></i>Video Vault
+        </button>
+        <button data-admin-tab="tab-events-awards" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-300 hover:text-white whitespace-nowrap">
+          <i class="fa-solid fa-trophy mr-1.5"></i>Acara & Awards
+        </button>
+        <button data-admin-tab="tab-menfess-mod" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-300 hover:text-white whitespace-nowrap">
+          <i class="fa-solid fa-comments mr-1.5"></i>Moderasi Menfess
+        </button>
+      </div>
+
+      <!-- Admin Tab Contents -->
+      <div class="p-5 sm:p-7">
+
+        <!-- TAB A: IDENTITAS, LOGO ANGKATAN & BACKGROUND -->
+        <div id="tab-identity" class="admin-tab-content space-y-6">
+          <form id="admin-identity-form" class="space-y-6">
+            <!-- Logo & Background Visual Customizer -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Logo Uploader -->
+              <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-4 space-y-3">
+                <h4 class="text-sm font-bold text-skyGlow"><i class="fa-solid fa-shield-cat mr-1.5"></i>Logo Angkatan</h4>
+                <div class="flex items-center gap-4">
+                  <div id="admin-logo-preview" class="w-16 h-16 rounded-2xl bg-indigoSurface border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
+                    <i class="fa-solid fa-sparkles text-2xl text-skyGlow"></i>
+                  </div>
+                  <div class="flex-1 space-y-2">
+                    <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-skyGlow/20 hover:bg-skyGlow/30 border border-skyGlow/45 text-xs font-bold text-white">
+                      <i class="fa-solid fa-upload text-skyGlow"></i>
+                      <span>Upload Logo Baru</span>
+                      <input type="file" id="set-logo-file" accept="image/*" class="hidden" />
+                    </label>
+                    <input type="text" id="set-logo-url" placeholder="Atau tempel URL logo..." class="w-full px-3 py-1.5 rounded-lg bg-indigoSurface border border-white/15 text-xs text-white" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Background Customizer -->
+              <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-4 space-y-3">
+                <div class="flex items-center justify-between">
+                  <h4 class="text-sm font-bold text-pinkGlow"><i class="fa-solid fa-image mr-1.5"></i>Background Website</h4>
+                  <button type="button" id="reset-bg-btn" class="text-[11px] text-slate-300 hover:text-white underline">Reset Default</button>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex flex-wrap gap-2">
+                    <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-pinkGlow/20 hover:bg-pinkGlow/30 border border-pinkGlow/45 text-xs font-bold text-white">
+                      <i class="fa-solid fa-upload text-pinkGlow"></i>
+                      <span>Upload Gambar BG</span>
+                      <input type="file" id="set-bg-file" accept="image/*" class="hidden" />
+                    </label>
+                    <select id="set-bg-preset" class="px-3 py-2 rounded-xl bg-indigoSurface border border-white/15 text-xs text-white">
+                      <option value="twilight">Tema: Twilight Indigo (Default)</option>
+                      <option value="aurora">Tema: Aurora Ocean Blue</option>
+                      <option value="sunset">Tema: Cosmic Berry Violet</option>
+                      <option value="custom">Gambar Kustom</option>
+                    </select>
+                  </div>
+                  <input type="text" id="set-bg-url" placeholder="Atau tempel URL gambar background..." class="w-full px-3 py-1.5 rounded-lg bg-indigoSurface border border-white/15 text-xs text-white" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Text & Links Configuration -->
+            <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Nama Angkatan</label>
+                <input type="text" id="set-batch-name" required class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Subjudul / Kelas</label>
+                <input type="text" id="set-batch-sub" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">Filosofi Angkatan</label>
+                <textarea id="set-philosophy" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Judul Countdown</label>
+                <input type="text" id="set-countdown-title" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Target Waktu Countdown</label>
+                <input type="datetime-local" id="set-countdown-date" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Link Folder Google Drive HD</label>
+                <input type="url" id="set-gdrive" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Link Instagram Angkatan</label>
+                <input type="url" id="set-ig-link" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Link TikTok Angkatan</label>
+                <input type="url" id="set-tiktok-link" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Link Playlist Spotify</label>
+                <input type="url" id="set-spotify-link" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-luminous px-6 py-3 rounded-xl text-sm font-bold text-white">
+              <i class="fa-solid fa-floppy-disk mr-2 text-skyGlow"></i>Simpan Semua Identitas & Tampilan
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB B: KELOLA SISWA & WALI KELAS (KELAS TUNGGAL) -->
+        <div id="tab-students" class="admin-tab-content hidden space-y-6">
+          <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-5">
+            <h4 id="student-form-heading" class="text-base font-bold text-white mb-4">Tambah Profil Wali Kelas / Siswa Kelas 9</h4>
+            <form id="admin-student-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <input type="hidden" id="edit-student-id" value="" />
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Nama Lengkap *</label>
+                <input type="text" id="stu-name" required placeholder="Contoh: Raka Pratama" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Nama Panggilan *</label>
+                <input type="text" id="stu-nickname" required placeholder="Contoh: Raka" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Kategori *</label>
+                <select id="stu-role" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white">
+                  <option value="Siswa Kelas 9">Siswa Kelas 9</option>
+                  <option value="Wali Kelas">Wali Kelas</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Cita-cita / Jabatan *</label>
+                <input type="text" id="stu-dream" required placeholder="Software Engineer / Wali Kelas 9" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Username Instagram (tanpa @)</label>
+                <input type="text" id="stu-ig" placeholder="rakapratama" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Username TikTok (tanpa @)</label>
+                <input type="text" id="stu-tiktok" placeholder="raka.serasi" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">Quotes / Pesan Kesan *</label>
+                <input type="text" id="stu-quote" required placeholder="Selaras dalam langkah, sukses bersama!" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Foto (URL atau Upload)</label>
+                <div class="flex gap-2">
+                  <input type="text" id="stu-photo-url" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-indigoSurface border border-white/15 text-xs text-white" />
+                  <label class="cursor-pointer px-3 py-2 rounded-xl bg-violetGlow/25 border border-violetGlow/45 text-violetGlow text-xs font-bold shrink-0 flex items-center" title="Upload Foto">
+                    <i class="fa-solid fa-camera"></i>
+                    <input type="file" id="stu-photo-file" accept="image/*" class="hidden" />
+                  </label>
+                </div>
+              </div>
+              <div class="sm:col-span-2 lg:col-span-3 flex items-center gap-3 pt-1">
+                <button type="submit" class="btn-luminous px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white">
+                  <i class="fa-solid fa-floppy-disk mr-1.5 text-skyGlow"></i>Simpan Profil ke Cloud
+                </button>
+                <button type="button" id="cancel-edit-student" class="hidden px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold text-slate-200">
+                  Batal Edit
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold text-slate-200 mb-3">Daftar Profil Kelas 9 (<span id="admin-stu-count">0</span>)</h4>
+            <div id="admin-students-list" class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-80 overflow-y-auto pr-1"></div>
+          </div>
+        </div>
+
+        <!-- TAB C: KELOLA GALERI FOTO -->
+        <div id="tab-gallery" class="admin-tab-content hidden space-y-6">
+          <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-5">
+            <h4 id="gallery-form-heading" class="text-base font-bold text-white mb-4">Tambah / Edit Foto Galeri</h4>
+            <form id="admin-gallery-form" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <input type="hidden" id="edit-gal-id" value="" />
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Judul Foto *</label>
+                <input type="text" id="gal-title" required placeholder="Contoh: Study Tour Jogja" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Kategori Acara *</label>
+                <select id="gal-category" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white">
+                  <option value="MPLS">MPLS</option>
+                  <option value="Study Tour">Study Tour</option>
+                  <option value="Classmeeting">Classmeeting</option>
+                  <option value="Perpisahan">Perpisahan</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">URL Gambar / Upload *</label>
+                <div class="flex gap-2">
+                  <input type="text" id="gal-url" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-indigoSurface border border-white/15 text-xs text-white" />
+                  <label class="cursor-pointer px-3 py-2 rounded-xl bg-skyGlow/25 border border-skyGlow/45 text-skyGlow text-xs font-bold shrink-0 flex items-center">
+                    <i class="fa-solid fa-upload"></i>
+                    <input type="file" id="gal-file" accept="image/*" class="hidden" />
+                  </label>
+                </div>
+              </div>
+              <div class="sm:col-span-3 flex items-center gap-3">
+                <button type="submit" class="btn-luminous px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white">
+                  <i class="fa-solid fa-check mr-1.5 text-skyGlow"></i>Simpan Foto Galeri
+                </button>
+                <button type="button" id="cancel-edit-gal" class="hidden px-4 py-2.5 rounded-xl bg-white/10 text-xs font-semibold text-slate-200">
+                  Batal Edit
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div id="admin-gallery-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-80 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- TAB D: KELOLA VIDEO VAULT -->
+        <div id="tab-videos" class="admin-tab-content hidden space-y-6">
+          <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-5">
+            <h4 class="text-base font-bold text-white mb-4">Tambah Video Baru</h4>
+            <form id="admin-video-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Judul Video *</label>
+                <input type="text" id="vid-title" required placeholder="Contoh: Aftermovie SERASI" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Sumber Video *</label>
+                <select id="vid-type" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white">
+                  <option value="youtube">Link YouTube (Watch / Shorts / youtu.be)</option>
+                  <option value="mp4">Direct Video URL (.mp4 / .webm)</option>
+                  <option value="local">Upload File Video Lokal</option>
+                </select>
+              </div>
+              <div id="vid-url-group" class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">URL Video *</label>
+                <input type="text" id="vid-url" placeholder="https://www.youtube.com/watch?v=..." class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div id="vid-file-group" class="hidden sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">File Video dari Perangkat</label>
+                <input type="file" id="vid-local-file" accept="video/*" class="w-full px-3 py-2 rounded-xl bg-indigoSurface border border-white/15 text-xs text-slate-200" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">Deskripsi Singkat</label>
+                <input type="text" id="vid-desc" placeholder="Momen berkesan Kelas 9..." class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <button type="submit" class="btn-luminous px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white">
+                  <i class="fa-solid fa-film mr-1.5 text-pinkGlow"></i>Simpan Video
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div id="admin-videos-list" class="space-y-2.5 max-h-72 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- TAB E: KELOLA ACARA & ANGKATAN AWARDS -->
+        <div id="tab-events-awards" class="admin-tab-content hidden space-y-6">
+          <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-5">
+            <h4 class="text-base font-bold text-white mb-4">Pengaturan Acara Perpisahan</h4>
+            <form id="admin-event-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">Judul Utama Acara</label>
+                <input type="text" id="set-event-title" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">Deskripsi Acara</label>
+                <textarea id="set-event-desc" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Jadwal Tanggal & Waktu</label>
+                <input type="text" id="set-event-date" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Lokasi Venue</label>
+                <input type="text" id="set-event-venue" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-slate-300 mb-1">Dresscode</label>
+                <input type="text" id="set-event-dresscode" class="w-full px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <button type="submit" class="btn-luminous px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white">
+                  <i class="fa-solid fa-check mr-1.5 text-skyGlow"></i>Simpan Info Acara
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Kelola Angkatan Awards -->
+          <div class="bg-indigoBase/75 border border-white/15 rounded-2xl p-5 space-y-4">
+            <h4 class="text-base font-bold text-white">Tambah / Edit Kartu Angkatan Awards</h4>
+            <form id="admin-award-form" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input type="hidden" id="edit-award-id" value="" />
+              <input type="text" id="award-cat" required placeholder="Kategori (mis. Ter-Ambis)" class="px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              <input type="text" id="award-winner" required placeholder="Nama Pemenang" class="px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              <input type="text" id="award-desc" required placeholder="Alasan ikonik..." class="px-3.5 py-2 rounded-xl bg-indigoSurface border border-white/15 text-sm text-white" />
+              <div class="sm:col-span-3 flex gap-2">
+                <button type="submit" class="btn-luminous px-4 py-2 rounded-xl text-xs font-bold text-white">Simpan Award</button>
+                <button type="button" id="cancel-edit-award" class="hidden px-3 py-2 rounded-xl bg-white/10 text-xs text-slate-200">Batal</button>
+              </div>
+            </form>
+            <div id="admin-awards-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+          </div>
+        </div>
+
+        <!-- TAB F: MODERASI MENFESS -->
+        <div id="tab-menfess-mod" class="admin-tab-content hidden space-y-4">
+          <h4 class="text-base font-bold text-white">Moderasi Pesan Wall of Fame / Menfess</h4>
+          <div id="admin-menfess-list" class="space-y-2.5 max-h-96 overflow-y-auto pr-1"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT & CLOUD SYNC LOGIC ==================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      doc,
+      setDoc,
+      deleteDoc,
+      onSnapshot,
+      getDocs
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // =========================================================================
+    // 1. CLOUD DATABASE CONFIG (SINGAPORE REGION: asia-southeast1)
+    // =========================================================================
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'serasi-kelas9-sg';
+    const firebaseConfig = typeof __firebase_config !== 'undefined'
+      ? JSON.parse(__firebase_config)
+      : {
+          apiKey: "AIzaSySerasiSingaporeKey",
+          authDomain: "serasi-kelas9.firebaseapp.com",
+          databaseURL: "https://serasi-kelas9-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "serasi-kelas9",
+          storageBucket: "serasi-kelas9.appspot.com",
+          messagingSenderId: "920260009",
+          appId: "1:920260009:web:serasisg"
+        };
+
+    if (!firebaseConfig.databaseURL) {
+      firebaseConfig.databaseURL = `https://${firebaseConfig.projectId || 'serasi-kelas9'}-default-rtdb.asia-southeast1.firebasedatabase.app`;
+    }
+
+    let app, auth, db;
+    let currentUser = null;
+    let isCloudConnected = false;
+
+    // =========================================================================
+    // 2. DEFAULT DATA UNTUK ANGKATAN SERASI (KELAS 9 TUNGGAL)
+    // =========================================================================
+    const BG_PRESETS = {
+      twilight: { g1: "#161d38", g2: "#222c56", g3: "#1b254b" },
+      aurora:   { g1: "#102542", g2: "#1b3b6f", g3: "#16325c" },
+      sunset:   { g1: "#231942", g2: "#3b235a", g3: "#281e4d" }
+    };
+
+    const DEFAULT_SETTINGS = {
+      batchName: "SERASI",
+      batchSub: "Angkatan Kelas 9 SMP",
+      philosophy: "\"Selaras dalam rasa, seirama dalam langkah, satu keluarga besar Kelas 9 yang merangkai kenangan putih biru menjadi cerita abadi.\"",
+      logoUrl: "",
+      bgPreset: "twilight",
+      customBgUrl: "",
+      countdownTitle: "Malam Pelepasan Angkatan SERASI",
+      countdownTarget: "2026-06-20T18:30",
+      gdriveUrl: "https://drive.google.com",
+      igLink: "https://instagram.com",
+      tiktokLink: "https://tiktok.com",
+      spotifyLink: "https://open.spotify.com",
+      eventTitle: "SERASI Graduation & Farewell Night",
+      eventDesc: "Perayaan malam pelepasan siswa-siswi Kelas 9 Angkatan SERASI. Mari rayakan kebersamaan indah kita sebelum melangkah ke jenjang berikutnya!",
+      eventDate: "Sabtu, 20 Juni 2026 • 18:30 WIB",
+      eventVenue: "Grand Ballroom Hotel Horizon",
+      eventDresscode: "Pastel & Midnight Formal"
+    };
+
+    const DEFAULT_STUDENTS = [
+      {
+        id: "wali-1",
+        name: "Ibu Ratna Dewi, S.Pd.",
+        nickname: "Bu Ratna",
+        role: "Wali Kelas",
+        dream: "Wali Kelas 9 • Pembimbing Angkatan SERASI",
+        quote: "Tetaplah menjadi keluarga yang selaras dan saling menguatkan di mana pun kalian melangkah.",
+        photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+        ig: "ratnadewi.edu",
+        tiktok: "buratna.serasi"
+      },
+      {
+        id: "stu-1",
+        name: "Raka Pratama Putra",
+        nickname: "Raka",
+        role: "Siswa Kelas 9",
+        dream: "Software & AI Engineer",
+        quote: "Satu kelas, satu cerita—SERASI selalu di hati sampai kapan pun!",
+        photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80",
+        ig: "rakapratama.26",
+        tiktok: "raka.serasi"
+      },
+      {
+        id: "stu-2",
+        name: "Alya Khairunnisa",
+        nickname: "Alya",
+        role: "Siswa Kelas 9",
+        dream: "Dokter Spesialis Anak",
+        quote: "Belajar bareng menjelang ujian adalah momen paling seru di kelas 9.",
+        photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+        ig: "alyakhairunnisa_",
+        tiktok: "alya.notes"
+      },
+      {
+        id: "stu-3",
+        name: "Dimas Arya Saputra",
+        nickname: "Dimas",
+        role: "Siswa Kelas 9",
+        dream: "Sutradara & Content Creator",
+        quote: "Nggak ada hari sepi kalau sudah kumpul bareng anak-anak SERASI.",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+        ig: "dimasarya.id",
+        tiktok: "dimas.vlogs"
+      },
+      {
+        id: "stu-4",
+        name: "Nadia Putri Maharani",
+        nickname: "Nadia",
+        role: "Siswa Kelas 9",
+        dream: "Arsitek & Desainer Interior",
+        quote: "Setiap sudut kelas 9 menyimpan tawa yang tidak akan tergantikan.",
+        photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+        ig: "nadiaputri.art",
+        tiktok: "nadia.sketch"
+      },
+      {
+        id: "stu-5",
+        name: "Alvaro Zidan Ramadhan",
+        nickname: "Zidan",
+        role: "Siswa Kelas 9",
+        dream: "Atlet & Sport Scientist",
+        quote: "Menang bareng, berjuang bareng, kompak selalu Kelas 9 SERASI!",
+        photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+        ig: "alvarozidan10",
+        tiktok: "zidan.sport"
+      }
+    ];
+
+    const DEFAULT_GALLERY = [
+      { id: "gal-1", title: "Hari Pertama MPLS Kelas 7", category: "MPLS", url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80" },
+      { id: "gal-2", title: "Kebersamaan Study Tour", category: "Study Tour", url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" },
+      { id: "gal-3", title: "Juara Umum Classmeeting", category: "Classmeeting", url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" },
+      { id: "gal-4", title: "Malam Inagurasi SERASI", category: "Perpisahan", url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" },
+      { id: "gal-5", title: "Foto Studio Satu Kelas 9", category: "Perpisahan", url: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" }
+    ];
+
+    const DEFAULT_VIDEOS = [
+      { id: "vid-1", title: "Aftermovie Angkatan SERASI", type: "youtube", url: "https://www.youtube.com/watch?v=LXb3EKWsInQ", desc: "Kilas balik perjalanan penuh kehangatan Kelas 9." },
+      { id: "vid-2", title: "Kompilasi Keseruan Study Tour", type: "mp4", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", desc: "Momen tak terlupakan selama perjalanan bersama." }
+    ];
+
+    const DEFAULT_AWARDS = [
+      { id: "aw-1", category: "Ter-Ambis & Teladan", winner: "Alya Khairunnisa", desc: "Selalu jadi andalan catatan rapi dan diskusi pelajaran." },
+      { id: "aw-2", category: "Ter-Receh & Moodbooster", winner: "Dimas Arya", desc: "Bikin suasana kelas selalu cair dan penuh tawa." },
+      { id: "aw-3", category: "Ter-Kreatif & Estetik", winner: "Nadia Putri", desc: "Arsip foto dan dekorasi kelas paling niat seangkatan." },
+      { id: "aw-4", category: "MVP Olahraga", winner: "Alvaro Zidan", desc: "Selalu tampil all-out di setiap pertandingan classmeeting." }
+    ];
+
+    const DEFAULT_MENFESS = [
+      { id: "mf-1", from: "Anak Bangku Tengah", to: "Seluruh Kelas 9 SERASI", message: "Terima kasih sudah jadi kelas paling kompak dan seru! Sukses masuk SMA impian ya semuanya!", createdAt: Date.now() - 3600000 },
+      { id: "mf-2", from: "Pengagum Rahasia", to: "Kamu yang sering senyum di kelas", message: "Semoga persahabatan SERASI tetap terjalin walau nanti kita beda sekolah.", createdAt: Date.now() - 1200000 }
+    ];
+
+    // =========================================================================
+    // 3. APPLICATION STATE
+    // =========================================================================
+    const state = {
+      activeTab: "view-beranda",
+      settings: { ...DEFAULT_SETTINGS },
+      students: [...DEFAULT_STUDENTS],
+      gallery: [...DEFAULT_GALLERY],
+      videos: [...DEFAULT_VIDEOS],
+      awards: [...DEFAULT_AWARDS],
+      menfess: [...DEFAULT_MENFESS],
+      activeRoleFilter: "ALL",
+      searchQuery: "",
+      activeGalleryFilter: "ALL",
+      activeVideoId: "vid-1",
+      isAdminAuthenticated: false
+    };
+
+    // =========================================================================
+    // 4. SIDEBAR TAB NAVIGATION (NO LONG VERTICAL PAGE SCROLL)
+    // =========================================================================
+    window.switchTab = function(tabId) {
+      state.activeTab = tabId;
+
+      document.querySelectorAll(".tab-view").forEach(sec => {
+        if (sec.id === tabId) {
+          sec.classList.remove("hidden");
+          sec.classList.remove("animate-fade-slide");
+          void sec.offsetWidth;
+          sec.classList.add("animate-fade-slide");
+        } else {
+          sec.classList.add("hidden");
+        }
+      });
+
+      document.querySelectorAll(".sidebar-tab").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tabId);
+      });
+
+      // Close mobile drawer if open
+      closeMobileDrawer();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.querySelectorAll(".sidebar-tab").forEach(btn => {
+      btn.addEventListener("click", () => window.switchTab(btn.dataset.tab));
+    });
+
+    const sidebarEl = document.getElementById("left-sidebar");
+    const backdropEl = document.getElementById("sidebar-backdrop");
+
+    function openMobileDrawer() {
+      sidebarEl.classList.remove("-translate-x-full");
+      backdropEl.classList.remove("hidden");
+    }
+    function closeMobileDrawer() {
+      sidebarEl.classList.add("-translate-x-full");
+      backdropEl.classList.add("hidden");
+    }
+
+    document.getElementById("mobile-drawer-btn").addEventListener("click", openMobileDrawer);
+    document.getElementById("close-drawer-btn").addEventListener("click", closeMobileDrawer);
+    backdropEl.addEventListener("click", closeMobileDrawer);
+
+    // =========================================================================
+    // 5. TOAST NOTIFICATION & IMAGE COMPRESSOR
+    // =========================================================================
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      const styles = {
+        success: "border-emerald-300/60 bg-emerald-950/90 text-emerald-100",
+        error: "border-rose-400/60 bg-rose-950/90 text-rose-100",
+        info: "border-skyGlow/60 bg-indigoBase/95 text-sky-100"
+      };
+      const icons = {
+        success: "fa-circle-check text-emerald-300",
+        error: "fa-circle-exclamation text-rose-300",
+        info: "fa-sparkles text-skyGlow"
+      };
+
+      toast.className = `pointer-events-auto glass-card px-4 py-3 rounded-2xl border ${styles[type] || styles.info} text-xs sm:text-sm font-medium flex items-center gap-3 shadow-2xl transform transition-all duration-300 translate-x-6 opacity-0`;
+      toast.innerHTML = `<i class="fa-solid ${icons[type] || icons.info} text-base"></i><span class="flex-1">${message}</span>`;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => toast.classList.remove("translate-x-6", "opacity-0"));
+      setTimeout(() => {
+        toast.classList.add("translate-x-6", "opacity-0");
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    function compressImageFile(file, maxWidth = 700, quality = 0.75) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            let w = img.width;
+            let h = img.height;
+            if (w > maxWidth) {
+              h = Math.round((h * maxWidth) / w);
+              w = maxWidth;
+            }
+            canvas.width = w;
+            canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // =========================================================================
+    // 6. CLOUD DATABASE SYNC (SINGAPORE SERVER: asia-southeast1)
+    // =========================================================================
+    function getPublicCol(name) {
+      return collection(db, "artifacts", appId, "public", "data", name);
+    }
+    function getPublicDoc(name, id) {
+      return doc(db, "artifacts", appId, "public", "data", name, id);
+    }
+
+    async function seedCloudIfEmpty() {
+      if (!currentUser || !db) return;
+      try {
+        const snap = await getDocs(getPublicCol("students"));
+        if (snap.empty) {
+          await setDoc(getPublicDoc("settings", "general"), DEFAULT_SETTINGS);
+          for (const s of DEFAULT_STUDENTS) await setDoc(getPublicDoc("students", s.id), s);
+          for (const g of DEFAULT_GALLERY) await setDoc(getPublicDoc("gallery", g.id), g);
+          for (const v of DEFAULT_VIDEOS) await setDoc(getPublicDoc("videos", v.id), v);
+          for (const a of DEFAULT_AWARDS) await setDoc(getPublicDoc("awards", a.id), a);
+          for (const m of DEFAULT_MENFESS) await setDoc(getPublicDoc("menfess", m.id), m);
+        }
+      } catch (err) {
+        console.warn("Cloud seed info:", err);
+      }
+    }
+
+    function attachCloudListeners() {
+      if (!currentUser || !db) return;
+
+      onSnapshot(getPublicDoc("settings", "general"), (docSnap) => {
+        if (docSnap.exists()) {
+          state.settings = { ...DEFAULT_SETTINGS, ...docSnap.data() };
+          renderSettingsUI();
+        }
+      }, (err) => console.warn(err));
+
+      onSnapshot(getPublicCol("students"), (snap) => {
+        if (!snap.empty) {
+          state.students = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          renderStudentsUI();
+          renderAdminLists();
+        }
+      }, (err) => console.warn(err));
+
+      onSnapshot(getPublicCol("gallery"), (snap) => {
+        if (!snap.empty) {
+          state.gallery = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          renderGalleryUI();
+          renderAdminLists();
+        }
+      }, (err) => console.warn(err));
+
+      onSnapshot(getPublicCol("videos"), (snap) => {
+        if (!snap.empty) {
+          state.videos = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          if (!state.videos.some(v => v.id === state.activeVideoId) && state.videos.length > 0) {
+            state.activeVideoId = state.videos[0].id;
+          }
+          renderVideosUI();
+          renderAdminLists();
+        }
+      }, (err) => console.warn(err));
+
+      onSnapshot(getPublicCol("awards"), (snap) => {
+        if (!snap.empty) {
+          state.awards = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          renderAwardsUI();
+          renderAdminLists();
+        }
+      }, (err) => console.warn(err));
+
+      onSnapshot(getPublicCol("menfess"), (snap) => {
+        if (!snap.empty) {
+          const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+          state.menfess = list;
+          renderMenfessUI();
+          renderAdminLists();
+        }
+      }, (err) => console.warn(err));
+    }
+
+    async function initCloud() {
+      try {
+        app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        db = getFirestore(app);
+
+        if (typeof __initial_auth_token !== "undefined" && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        currentUser = auth.currentUser;
+        if (currentUser) {
+          isCloudConnected = true;
+          document.getElementById("sync-status-label").textContent = "SG Cloud Live";
+          await seedCloudIfEmpty();
+          attachCloudListeners();
+        }
+      } catch (err) {
+        console.warn("Local session fallback active:", err);
+      }
+    }
+
+    // =========================================================================
+    // 7. RENDER FUNCTIONS (IDENTITY, LOGO, BG, PROFILES, GALLERY, VIDEOS, ETC.)
+    // =========================================================================
+    function applyThemeAndBackground() {
+      const s = state.settings;
+      const bgLayer = document.getElementById("custom-bg-layer");
+      const bgOverlay = document.getElementById("custom-bg-overlay");
+
+      if (s.customBgUrl && s.customBgUrl.trim() !== "") {
+        bgLayer.style.backgroundImage = `url('${s.customBgUrl}')`;
+        bgLayer.style.opacity = "1";
+        bgOverlay.style.opacity = "1";
+      } else {
+        bgLayer.style.opacity = "0";
+        bgOverlay.style.opacity = "0";
+        const preset = BG_PRESETS[s.bgPreset] || BG_PRESETS.twilight;
+        document.documentElement.style.setProperty("--bg-grad-1", preset.g1);
+        document.documentElement.style.setProperty("--bg-grad-2", preset.g2);
+        document.documentElement.style.setProperty("--bg-grad-3", preset.g3);
+      }
+
+      // Render Batch Logo across Sidebar, Mobile Header, Hero, and Admin Preview
+      const logoHTML = s.logoUrl && s.logoUrl.trim() !== ""
+        ? `<img src="${escapeHTML(s.logoUrl)}" alt="Logo ${escapeHTML(s.batchName)}" class="w-full h-full object-cover" />`
+        : null;
+
+      document.getElementById("sidebar-logo-box").innerHTML = logoHTML || `<i class="fa-solid fa-sparkles text-skyGlow text-xl"></i>`;
+      document.getElementById("mobile-logo-box").innerHTML = logoHTML || `<i class="fa-solid fa-sparkles text-skyGlow text-sm"></i>`;
+      document.getElementById("hero-logo-box").innerHTML = logoHTML || `<i class="fa-solid fa-sparkles text-5xl text-skyGlow"></i>`;
+      document.getElementById("admin-logo-preview").innerHTML = logoHTML || `<i class="fa-solid fa-sparkles text-2xl text-skyGlow"></i>`;
+    }
+
+    function renderSettingsUI() {
+      const s = state.settings;
+      document.title = `ANGKATAN ${s.batchName} — Digital Yearbook Kelas 9 SMP`;
+
+      document.getElementById("sidebar-batch-name").textContent = s.batchName;
+      document.getElementById("sidebar-batch-sub").textContent = s.batchSub;
+      document.getElementById("mobile-header-title").textContent = s.batchName;
+      document.getElementById("mobile-header-sub").textContent = s.batchSub;
+      document.getElementById("footer-copy-name").textContent = s.batchName;
+
+      document.getElementById("hero-batch-title").textContent = s.batchName;
+      document.getElementById("hero-subtitle-badge").textContent = `Digital Yearbook • ${s.batchSub}`;
+      document.getElementById("hero-philosophy-text").textContent = s.philosophy;
+      document.getElementById("countdown-heading").textContent = s.countdownTitle || `Malam Pelepasan Angkatan ${s.batchName}`;
+      document.getElementById("player-song-title").textContent = `${s.batchName} Anthem '26`;
+
+      document.getElementById("gdrive-btn").href = s.gdriveUrl || "https://drive.google.com";
+      document.getElementById("link-ig-batch").href = s.igLink || "https://instagram.com";
+      document.getElementById("link-tiktok-batch").href = s.tiktokLink || "https://tiktok.com";
+      document.getElementById("link-spotify-batch").href = s.spotifyLink || "https://open.spotify.com";
+
+      document.getElementById("event-title-display").textContent = s.eventTitle;
+      document.getElementById("event-desc-display").textContent = s.eventDesc;
+      document.getElementById("event-date-text").textContent = s.eventDate;
+      document.getElementById("event-venue-text").textContent = s.eventVenue;
+      document.getElementById("event-dresscode-text").textContent = s.eventDresscode;
+
+      // Sync Admin Form Fields
+      document.getElementById("set-batch-name").value = s.batchName || "";
+      document.getElementById("set-batch-sub").value = s.batchSub || "";
+      document.getElementById("set-philosophy").value = s.philosophy || "";
+      document.getElementById("set-logo-url").value = s.logoUrl || "";
+      document.getElementById("set-bg-url").value = s.customBgUrl || "";
+      document.getElementById("set-bg-preset").value = s.customBgUrl ? "custom" : (s.bgPreset || "twilight");
+      document.getElementById("set-countdown-title").value = s.countdownTitle || "";
+      document.getElementById("set-countdown-date").value = s.countdownTarget || "2026-06-20T18:30";
+      document.getElementById("set-gdrive").value = s.gdriveUrl || "";
+      document.getElementById("set-ig-link").value = s.igLink || "";
+      document.getElementById("set-tiktok-link").value = s.tiktokLink || "";
+      document.getElementById("set-spotify-link").value = s.spotifyLink || "";
+
+      document.getElementById("set-event-title").value = s.eventTitle || "";
+      document.getElementById("set-event-desc").value = s.eventDesc || "";
+      document.getElementById("set-event-date").value = s.eventDate || "";
+      document.getElementById("set-event-venue").value = s.eventVenue || "";
+      document.getElementById("set-event-dresscode").value = s.eventDresscode || "";
+
+      applyThemeAndBackground();
+    }
+
+    function renderStudentsUI() {
+      const grid = document.getElementById("profiles-grid");
+      const emptyEl = document.getElementById("profiles-empty");
+      const q = state.searchQuery.toLowerCase().trim();
+
+      const filtered = state.students.filter(stu => {
+        const roleVal = stu.role || "Siswa Kelas 9";
+        const matchRole = state.activeRoleFilter === "ALL" || roleVal === state.activeRoleFilter;
+        const matchSearch =
+          !q ||
+          stu.name.toLowerCase().includes(q) ||
+          stu.nickname.toLowerCase().includes(q) ||
+          stu.dream.toLowerCase().includes(q) ||
+          stu.quote.toLowerCase().includes(q);
+        return matchRole && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        emptyEl.classList.remove("hidden");
+        return;
+      }
+
+      emptyEl.classList.add("hidden");
+      grid.innerHTML = filtered.map(stu => {
+        const roleVal = stu.role || "Siswa Kelas 9";
+        const isTeacher = roleVal === "Wali Kelas";
+        const badgeCls = isTeacher
+          ? "bg-amber-300/25 text-amber-200 border-amber-300/50"
+          : "bg-skyGlow/25 text-skyGlow border-skyGlow/50";
+        const fallback = `https://placehold.co/400x500/1f284d/38bdf8?text=${encodeURIComponent(stu.nickname)}`;
+
+        return `
+          <div class="flip-perspective h-[380px] cursor-pointer group" onclick="this.classList.toggle('is-flipped')">
+            <div class="flip-inner">
+              <!-- FRONT -->
+              <div class="flip-front glass-card flex flex-col justify-between">
+                <div class="relative h-60 w-full overflow-hidden">
+                  <img
+                    src="${escapeHTML(stu.photo || fallback)}"
+                    onerror="this.src='${fallback}'"
+                    alt="${escapeHTML(stu.name)}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#161d38] via-transparent to-transparent"></div>
+                  <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${badgeCls}">
+                    ${escapeHTML(roleVal)}
+                  </span>
+                  <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-indigoBase/80 border border-white/20 text-white flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-rotate"></i>
+                  </span>
+                </div>
+
+                <div class="p-5 pt-2 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 class="text-lg font-bold text-white line-clamp-1">${escapeHTML(stu.name)}</h3>
+                    <p class="text-xs text-violetGlow font-medium mt-0.5 line-clamp-1">${escapeHTML(stu.dream)}</p>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-300 pt-2 border-t border-white/15">
+                    <span>@${escapeHTML(stu.nickname.toLowerCase())}</span>
+                    <span class="text-skyGlow font-bold">Klik untuk Bio <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BACK -->
+              <div class="flip-back glass-card border-violetGlow/60 p-6 flex flex-col justify-between bg-gradient-to-br from-[#232e5c] to-[#161d38]">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-violetGlow/25 text-violetGlow border border-violetGlow/45">
+                      "${escapeHTML(stu.nickname)}"
+                    </span>
+                    <span class="text-xs text-slate-200 font-semibold">${escapeHTML(roleVal)}</span>
+                  </div>
+                  <h4 class="text-base font-bold text-white mb-3">${escapeHTML(stu.name)}</h4>
+                  <div class="bg-white/10 border border-white/15 rounded-xl p-3.5 mb-4">
+                    <i class="fa-solid fa-quote-left text-skyGlow text-xs mb-1 block"></i>
+                    <p class="text-xs sm:text-sm text-white italic leading-relaxed">"${escapeHTML(stu.quote)}"</p>
+                  </div>
+                  <div>
+                    <span class="text-[11px] uppercase tracking-wider text-slate-300 block">Cita-cita / Peran</span>
+                    <span class="text-sm font-bold text-skyGlow">${escapeHTML(stu.dream)}</span>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-white/15 flex items-center gap-2.5" onclick="event.stopPropagation()">
+                  ${stu.ig ? `
+                    <a href="https://instagram.com/${encodeURIComponent(stu.ig)}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-pinkGlow/20 hover:bg-pinkGlow/35 border border-pinkGlow/50 text-pinkGlow text-xs font-bold flex items-center justify-center gap-1.5 transition">
+                      <i class="fa-brands fa-instagram"></i><span>Instagram</span>
+                    </a>` : ""}
+                  ${stu.tiktok ? `
+                    <a href="https://tiktok.com/@${encodeURIComponent(stu.tiktok)}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-skyGlow/20 hover:bg-skyGlow/35 border border-skyGlow/50 text-skyGlow text-xs font-bold flex items-center justify-center gap-1.5 transition">
+                      <i class="fa-brands fa-tiktok"></i><span>TikTok</span>
+                    </a>` : ""}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderGalleryUI() {
+      const container = document.getElementById("gallery-masonry");
+      const filtered = state.gallery.filter(item =>
+        state.activeGalleryFilter === "ALL" || item.category === state.activeGalleryFilter
+      );
+
+      container.innerHTML = filtered.map(item => `
+        <div class="masonry-item">
+          <div onclick="window.openLightbox('${escapeAttr(item.url)}', '${escapeAttr(item.title)}', '${escapeAttr(item.category)}')" class="tilt-card glass-card rounded-2xl overflow-hidden cursor-pointer group relative">
+            <img src="${escapeHTML(item.url)}" onerror="this.src='https://placehold.co/800x600/1f284d/38bdf8?text=SERASI'" alt="${escapeHTML(item.title)}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#161d38]/95 via-transparent to-transparent flex flex-col justify-end p-4">
+              <span class="self-start px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-violetGlow/35 text-white border border-violetGlow/50 mb-1.5">${escapeHTML(item.category)}</span>
+              <h4 class="text-sm sm:text-base font-bold text-white">${escapeHTML(item.title)}</h4>
+            </div>
+          </div>
+        </div>
+      `).join("");
+      attachTiltListeners();
+    }
+
+    function extractYouTubeEmbedUrl(url) {
+      if (!url) return "";
+      const regExp = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = url.match(regExp);
+      return match && match[1] ? `https://www.youtube.com/embed/${match[1]}?rel=0` : url;
+    }
+
+    function renderVideosUI() {
+      const playlistEl = document.getElementById("video-playlist");
+      const countEl = document.getElementById("video-count-badge");
+      const playerWrapper = document.getElementById("video-player-wrapper");
+      const titleEl = document.getElementById("active-video-title");
+      const descEl = document.getElementById("active-video-desc");
+      const badgeEl = document.getElementById("active-video-badge");
+
+      countEl.textContent = `${state.videos.length} Video`;
+      const activeVid = state.videos.find(v => v.id === state.activeVideoId) || state.videos[0];
+
+      if (activeVid) {
+        titleEl.textContent = activeVid.title;
+        descEl.textContent = activeVid.desc || "";
+        badgeEl.textContent = activeVid.type.toUpperCase();
+
+        if (activeVid.type === "youtube") {
+          playerWrapper.innerHTML = `<iframe src="${escapeHTML(extractYouTubeEmbedUrl(activeVid.url))}" title="${escapeHTML(activeVid.title)}" class="w-full h-full border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else {
+          playerWrapper.innerHTML = `<video src="${escapeHTML(activeVid.url)}" controls playsinline class="w-full h-full object-contain bg-slate-950"></video>`;
+        }
+      }
+
+      playlistEl.innerHTML = state.videos.map((vid, idx) => {
+        const isActive = activeVid && vid.id === activeVid.id;
+        return `
+          <button onclick="window.selectVideo('${escapeAttr(vid.id)}')" class="w-full text-left p-3 rounded-2xl border transition flex items-center gap-3 ${isActive ? "bg-pinkGlow/20 border-pinkGlow/60 text-white" : "bg-indigoBase/65 border-white/15 text-slate-200 hover:bg-white/15"}">
+            <div class="w-8 h-8 rounded-xl ${isActive ? "bg-pinkGlow text-slate-950" : "bg-white/15 text-slate-200"} flex items-center justify-center shrink-0 font-bold text-xs">
+              ${isActive ? '<i class="fa-solid fa-play"></i>' : idx + 1}
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="text-xs sm:text-sm font-bold truncate">${escapeHTML(vid.title)}</div>
+              <div class="text-[10px] text-slate-300 uppercase mt-0.5">${escapeHTML(vid.type)}</div>
+            </div>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function renderAwardsUI() {
+      const grid = document.getElementById("awards-grid");
+      const accents = ["text-amber-300 border-amber-300/40", "text-skyGlow border-skyGlow/40", "text-pinkGlow border-pinkGlow/40", "text-violetGlow border-violetGlow/40"];
+      grid.innerHTML = state.awards.map((aw, i) => `
+        <div class="tilt-card glass-card rounded-2xl p-5 ${accents[i % accents.length]}">
+          <span class="text-[11px] font-bold uppercase tracking-wider block">${escapeHTML(aw.category)}</span>
+          <h4 class="text-lg font-extrabold text-white mt-1">${escapeHTML(aw.winner)}</h4>
+          <p class="text-xs text-slate-200/90 mt-1.5">"${escapeHTML(aw.desc)}"</p>
+        </div>
+      `).join("");
+      attachTiltListeners();
+    }
+
+    function renderMenfessUI() {
+      document.getElementById("menfess-count").textContent = `${state.menfess.length} Pesan`;
+      document.getElementById("menfess-list").innerHTML = state.menfess.map(m => `
+        <div class="glass-card rounded-2xl p-4 sm:p-5">
+          <div class="flex flex-wrap items-center gap-2 text-xs mb-2">
+            <span class="px-2.5 py-1 rounded-lg bg-skyGlow/20 text-skyGlow font-bold">Dari: ${escapeHTML(m.from)}</span>
+            <i class="fa-solid fa-arrow-right text-slate-300 text-[10px]"></i>
+            <span class="px-2.5 py-1 rounded-lg bg-pinkGlow/20 text-pinkGlow font-bold">Untuk: ${escapeHTML(m.to)}</span>
+          </div>
+          <p class="text-sm text-white leading-relaxed">"${escapeHTML(m.message)}"</p>
+        </div>
+      `).join("");
+    }
+
+    function renderAdminLists() {
+      document.getElementById("admin-stu-count").textContent = state.students.length;
+      document.getElementById("admin-students-list").innerHTML = state.students.map(s => `
+        <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-indigoBase/85 border border-white/15">
+          <div class="flex items-center gap-3 min-w-0">
+            <img src="${escapeHTML(s.photo)}" onerror="this.src='https://placehold.co/100x100/1f284d/38bdf8?text=9'" class="w-10 h-10 rounded-lg object-cover shrink-0" />
+            <div class="min-w-0">
+              <div class="text-xs sm:text-sm font-bold text-white truncate">${escapeHTML(s.name)}</div>
+              <div class="text-[11px] text-skyGlow">${escapeHTML(s.role || "Siswa Kelas 9")} • ${escapeHTML(s.nickname)}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="window.editStudent('${escapeAttr(s.id)}')" class="p-2 rounded-lg bg-amber-400/20 text-amber-200 hover:bg-amber-400/35 text-xs"><i class="fa-solid fa-pen"></i></button>
+            <button onclick="window.deleteItem('students', '${escapeAttr(s.id)}')" class="p-2 rounded-lg bg-rose-500/20 text-rose-200 hover:bg-rose-500/35 text-xs"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      `).join("");
+
+      document.getElementById("admin-gallery-list").innerHTML = state.gallery.map(g => `
+        <div class="relative rounded-xl overflow-hidden border border-white/15 group aspect-square bg-indigoBase">
+          <img src="${escapeHTML(g.url)}" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-slate-950/75 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center p-2 text-center gap-1.5">
+            <span class="text-[10px] text-skyGlow font-bold">${escapeHTML(g.category)}</span>
+            <p class="text-xs text-white font-semibold line-clamp-2">${escapeHTML(g.title)}</p>
+            <div class="flex gap-1.5 mt-1">
+              <button onclick="window.editGallery('${escapeAttr(g.id)}')" class="px-2.5 py-1 rounded-lg bg-amber-400 text-slate-950 text-xs font-bold">Edit</button>
+              <button onclick="window.deleteItem('gallery', '${escapeAttr(g.id)}')" class="px-2.5 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">Hapus</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      document.getElementById("admin-videos-list").innerHTML = state.videos.map(v => `
+        <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-indigoBase/85 border border-white/15">
+          <div class="min-w-0">
+            <div class="text-xs sm:text-sm font-bold text-white truncate">${escapeHTML(v.title)}</div>
+            <div class="text-[11px] text-slate-300 uppercase">${escapeHTML(v.type)}</div>
+          </div>
+          <button onclick="window.deleteItem('videos', '${escapeAttr(v.id)}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-200 text-xs font-bold shrink-0">Hapus</button>
+        </div>
+      `).join("");
+
+      document.getElementById("admin-awards-list").innerHTML = state.awards.map(a => `
+        <div class="flex items-center justify-between gap-2 p-3 rounded-xl bg-indigoSurface border border-white/15">
+          <div class="min-w-0">
+            <div class="text-[11px] font-bold text-amber-300">${escapeHTML(a.category)}</div>
+            <div class="text-xs font-bold text-white truncate">${escapeHTML(a.winner)}</div>
+          </div>
+          <div class="flex gap-1 shrink-0">
+            <button onclick="window.editAward('${escapeAttr(a.id)}')" class="p-1.5 rounded-lg bg-amber-400/20 text-amber-200 text-xs"><i class="fa-solid fa-pen"></i></button>
+            <button onclick="window.deleteItem('awards', '${escapeAttr(a.id)}')" class="p-1.5 rounded-lg bg-rose-500/20 text-rose-200 text-xs"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      `).join("");
+
+      document.getElementById("admin-menfess-list").innerHTML = state.menfess.map(m => `
+        <div class="flex items-start justify-between gap-3 p-3 rounded-xl bg-indigoBase/85 border border-white/15">
+          <div class="min-w-0">
+            <div class="text-xs font-bold text-skyGlow">${escapeHTML(m.from)} → ${escapeHTML(m.to)}</div>
+            <p class="text-xs text-slate-200 mt-1">${escapeHTML(m.message)}</p>
+          </div>
+          <button onclick="window.deleteItem('menfess', '${escapeAttr(m.id)}')" class="px-2.5 py-1.5 rounded-lg bg-rose-500/20 text-rose-200 text-xs font-bold shrink-0"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      `).join("");
+    }
+
+    // =========================================================================
+    // 8. CLOUD & LOCAL CRUD OPERATIONS
+    // =========================================================================
+    async function saveRecord(colName, id, data) {
+      if (isCloudConnected && currentUser && db) {
+        await setDoc(getPublicDoc(colName, id), data);
+      } else {
+        const arr = state[colName];
+        const idx = arr.findIndex(item => item.id === id);
+        if (idx >= 0) arr[idx] = { id, ...data };
+        else arr.unshift({ id, ...data });
+        refreshAllViews();
+      }
+    }
+
+    window.deleteItem = async function(colName, id) {
+      try {
+        if (isCloudConnected && currentUser && db) {
+          await deleteDoc(getPublicDoc(colName, id));
+        } else {
+          state[colName] = state[colName].filter(item => item.id !== id);
+          refreshAllViews();
+        }
+        showToast("Data berhasil dihapus!", "success");
+      } catch (err) {
+        showToast("Gagal menghapus data.", "error");
+      }
+    };
+
+    function refreshAllViews() {
+      renderSettingsUI();
+      renderStudentsUI();
+      renderGalleryUI();
+      renderVideosUI();
+      renderAwardsUI();
+      renderMenfessUI();
+      renderAdminLists();
+    }
+
+    // =========================================================================
+    // 9. INTERACTIVE CONTROLS & ADMIN HANDLERS (PASSWORD: doomsday)
+    // =========================================================================
+    document.getElementById("student-search").addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      renderStudentsUI();
+    });
+
+    document.querySelectorAll(".role-filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".role-filter-btn").forEach(b => {
+          b.classList.remove("active", "bg-skyGlow", "text-slate-950", "shadow-lg", "shadow-skyGlow/25");
+          b.classList.add("bg-white/10", "text-slate-200", "border", "border-white/15");
+        });
+        btn.classList.add("active", "bg-skyGlow", "text-slate-950", "shadow-lg", "shadow-skyGlow/25");
+        btn.classList.remove("bg-white/10", "text-slate-200", "border", "border-white/15");
+        state.activeRoleFilter = btn.dataset.role;
+        renderStudentsUI();
+      });
+    });
+
+    document.querySelectorAll(".gal-filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".gal-filter-btn").forEach(b => {
+          b.classList.remove("active", "bg-violetGlow", "text-slate-950", "shadow-lg", "shadow-violetGlow/25");
+          b.classList.add("bg-white/10", "text-slate-200", "border", "border-white/15");
+        });
+        btn.classList.add("active", "bg-violetGlow", "text-slate-950", "shadow-lg", "shadow-violetGlow/25");
+        btn.classList.remove("bg-white/10", "text-slate-200", "border", "border-white/15");
+        state.activeGalleryFilter = btn.dataset.cat;
+        renderGalleryUI();
+      });
+    });
+
+    window.openLightbox = function(url, title, category) {
+      document.getElementById("lightbox-img").src = url;
+      document.getElementById("lightbox-title").textContent = title;
+      document.getElementById("lightbox-cat").textContent = category;
+      document.getElementById("lightbox-modal").classList.remove("hidden");
+    };
+    document.getElementById("lightbox-close").addEventListener("click", () => document.getElementById("lightbox-modal").classList.add("hidden"));
+    document.getElementById("lightbox-modal").addEventListener("click", (e) => {
+      if (e.target.id === "lightbox-modal") document.getElementById("lightbox-modal").classList.add("hidden");
+    });
+
+    window.selectVideo = function(id) {
+      state.activeVideoId = id;
+      renderVideosUI();
+    };
+
+    document.getElementById("quick-local-video").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const localId = `local-${Date.now()}`;
+      state.videos.unshift({ id: localId, title: file.name.replace(/\.[^/.]+$/, ""), type: "local", url: URL.createObjectURL(file), desc: "Video lokal dari perangkat." });
+      state.activeVideoId = localId;
+      renderVideosUI();
+      renderAdminLists();
+      showToast("Video lokal siap diputar!", "success");
+    });
+
+    document.getElementById("menfess-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const from = document.getElementById("menfess-from").value.trim();
+      const to = document.getElementById("menfess-to").value.trim();
+      const message = document.getElementById("menfess-msg").value.trim();
+      if (!from || !to || !message) return;
+
+      const id = `mf-${Date.now()}`;
+      await saveRecord("menfess", id, { id, from, to, message, createdAt: Date.now() });
+      e.target.reset();
+      showToast("Ucapan berhasil ditempel ke Wall of Fame!", "success");
+    });
+
+    // Secret Admin Login
+    document.getElementById("secret-admin-trigger").addEventListener("click", () => {
+      if (state.isAdminAuthenticated) {
+        document.getElementById("admin-dashboard-modal").classList.remove("hidden");
+      } else {
+        document.getElementById("admin-login-modal").classList.remove("hidden");
+        setTimeout(() => document.getElementById("admin-password-input").focus(), 100);
+      }
+    });
+    document.getElementById("close-login-modal").addEventListener("click", () => document.getElementById("admin-login-modal").classList.add("hidden"));
+
+    document.getElementById("admin-login-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (document.getElementById("admin-password-input").value === "doomsday") {
+        state.isAdminAuthenticated = true;
+        document.getElementById("admin-password-input").value = "";
+        document.getElementById("admin-login-modal").classList.add("hidden");
+        document.getElementById("admin-dashboard-modal").classList.remove("hidden");
+        renderAdminLists();
+        showToast("Selamat datang di Pusat Pengaturan Admin!", "success");
+      } else {
+        showToast("Kata sandi salah!", "error");
+      }
+    });
+    document.getElementById("close-admin-dashboard").addEventListener("click", () => document.getElementById("admin-dashboard-modal").classList.add("hidden"));
+
+    // Admin Sub-Tabs
+    document.querySelectorAll(".admin-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".admin-tab-btn").forEach(b => {
+          b.classList.remove("active", "bg-skyGlow/20", "text-skyGlow", "border-b-2", "border-skyGlow");
+          b.classList.add("text-slate-300");
+        });
+        btn.classList.add("active", "bg-skyGlow/20", "text-skyGlow", "border-b-2", "border-skyGlow");
+        btn.classList.remove("text-slate-300");
+
+        document.querySelectorAll(".admin-tab-content").forEach(c => c.classList.add("hidden"));
+        document.getElementById(btn.dataset.adminTab).classList.remove("hidden");
+      });
+    });
+
+    // Logo & Background Upload Handlers in Admin
+    document.getElementById("set-logo-file").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const compressed = await compressImageFile(file, 320, 0.8);
+      document.getElementById("set-logo-url").value = compressed;
+      document.getElementById("admin-logo-preview").innerHTML = `<img src="${compressed}" class="w-full h-full object-cover" />`;
+      showToast("Logo angkatan siap disimpan!", "success");
+    });
+
+    document.getElementById("set-bg-file").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      showToast("Mengoptimalkan gambar background...", "info");
+      const compressed = await compressImageFile(file, 1280, 0.72);
+      document.getElementById("set-bg-url").value = compressed;
+      document.getElementById("set-bg-preset").value = "custom";
+      showToast("Gambar background siap disimpan!", "success");
+    });
+
+    document.getElementById("reset-bg-btn").addEventListener("click", () => {
+      document.getElementById("set-bg-url").value = "";
+      document.getElementById("set-bg-preset").value = "twilight";
+      showToast("Background direset ke tema Twilight Indigo.", "info");
+    });
+
+    // Save Identity & Appearance Form
+    document.getElementById("admin-identity-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const updated = {
+        ...state.settings,
+        batchName: document.getElementById("set-batch-name").value.trim() || "SERASI",
+        batchSub: document.getElementById("set-batch-sub").value.trim() || "Angkatan Kelas 9 SMP",
+        philosophy: document.getElementById("set-philosophy").value.trim(),
+        logoUrl: document.getElementById("set-logo-url").value.trim(),
+        bgPreset: document.getElementById("set-bg-preset").value,
+        customBgUrl: document.getElementById("set-bg-url").value.trim(),
+        countdownTitle: document.getElementById("set-countdown-title").value.trim(),
+        countdownTarget: document.getElementById("set-countdown-date").value,
+        gdriveUrl: document.getElementById("set-gdrive").value.trim(),
+        igLink: document.getElementById("set-ig-link").value.trim(),
+        tiktokLink: document.getElementById("set-tiktok-link").value.trim(),
+        spotifyLink: document.getElementById("set-spotify-link").value.trim()
+      };
+
+      if (isCloudConnected && currentUser && db) {
+        await setDoc(getPublicDoc("settings", "general"), updated);
+      } else {
+        state.settings = updated;
+        renderSettingsUI();
+      }
+      showToast("Identitas, logo, dan tampilan berhasil disimpan!", "success");
+    });
+
+    // Save Event Info Form
+    document.getElementById("admin-event-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const updated = {
+        ...state.settings,
+        eventTitle: document.getElementById("set-event-title").value.trim(),
+        eventDesc: document.getElementById("set-event-desc").value.trim(),
+        eventDate: document.getElementById("set-event-date").value.trim(),
+        eventVenue: document.getElementById("set-event-venue").value.trim(),
+        eventDresscode: document.getElementById("set-event-dresscode").value.trim()
+      };
+      if (isCloudConnected && currentUser && db) {
+        await setDoc(getPublicDoc("settings", "general"), updated);
+      } else {
+        state.settings = updated;
+        renderSettingsUI();
+      }
+      showToast("Informasi acara perpisahan diperbarui!", "success");
+    });
+
+    // Student CRUD
+    document.getElementById("stu-photo-file").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const compressed = await compressImageFile(file, 550, 0.74);
+      document.getElementById("stu-photo-url").value = compressed;
+      showToast("Foto profil siap disimpan!", "success");
+    });
+
+    document.getElementById("admin-student-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const editId = document.getElementById("edit-student-id").value;
+      const id = editId || `stu-${Date.now()}`;
+      const name = document.getElementById("stu-name").value.trim();
+      const nickname = document.getElementById("stu-nickname").value.trim();
+      const role = document.getElementById("stu-role").value;
+      const dream = document.getElementById("stu-dream").value.trim();
+      const ig = document.getElementById("stu-ig").value.trim().replace(/^@/, "");
+      const tiktok = document.getElementById("stu-tiktok").value.trim().replace(/^@/, "");
+      const quote = document.getElementById("stu-quote").value.trim();
+      const photo = document.getElementById("stu-photo-url").value.trim() ||
+        `https://placehold.co/400x500/1f284d/38bdf8?text=${encodeURIComponent(nickname)}`;
+
+      await saveRecord("students", id, { id, name, nickname, role, dream, ig, tiktok, quote, photo });
+      e.target.reset();
+      document.getElementById("edit-student-id").value = "";
+      document.getElementById("student-form-heading").textContent = "Tambah Profil Wali Kelas / Siswa Kelas 9";
+      document.getElementById("cancel-edit-student").classList.add("hidden");
+      showToast("Profil berhasil disimpan ke Cloud!", "success");
+    });
+
+    window.editStudent = function(id) {
+      const s = state.students.find(item => item.id === id);
+      if (!s) return;
+      document.getElementById("edit-student-id").value = s.id;
+      document.getElementById("stu-name").value = s.name;
+      document.getElementById("stu-nickname").value = s.nickname;
+      document.getElementById("stu-role").value = s.role || "Siswa Kelas 9";
+      document.getElementById("stu-dream").value = s.dream;
+      document.getElementById("stu-ig").value = s.ig || "";
+      document.getElementById("stu-tiktok").value = s.tiktok || "";
+      document.getElementById("stu-quote").value = s.quote;
+      document.getElementById("stu-photo-url").value = s.photo;
+      document.getElementById("student-form-heading").textContent = `Edit Profil: ${s.name}`;
+      document.getElementById("cancel-edit-student").classList.remove("hidden");
+    };
+
+    document.getElementById("cancel-edit-student").addEventListener("click", () => {
+      document.getElementById("admin-student-form").reset();
+      document.getElementById("edit-student-id").value = "";
+      document.getElementById("student-form-heading").textContent = "Tambah Profil Wali Kelas / Siswa Kelas 9";
+      document.getElementById("cancel-edit-student").classList.add("hidden");
+    });
+
+    // Gallery CRUD
+    document.getElementById("gal-file").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const compressed = await compressImageFile(file, 850, 0.74);
+      document.getElementById("gal-url").value = compressed;
+      showToast("Foto galeri siap disimpan!", "success");
+    });
+
+    document.getElementById("admin-gallery-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const editId = document.getElementById("edit-gal-id").value;
+      const id = editId || `gal-${Date.now()}`;
+      const title = document.getElementById("gal-title").value.trim();
+      const category = document.getElementById("gal-category").value;
+      const url = document.getElementById("gal-url").value.trim();
+      if (!url) return showToast("Masukkan URL atau upload gambar!", "error");
+
+      await saveRecord("gallery", id, { id, title, category, url });
+      e.target.reset();
+      document.getElementById("edit-gal-id").value = "";
+      document.getElementById("cancel-edit-gal").classList.add("hidden");
+      showToast("Foto galeri berhasil disimpan!", "success");
+    });
+
+    window.editGallery = function(id) {
+      const g = state.gallery.find(item => item.id === id);
+      if (!g) return;
+      document.getElementById("edit-gal-id").value = g.id;
+      document.getElementById("gal-title").value = g.title;
+      document.getElementById("gal-category").value = g.category;
+      document.getElementById("gal-url").value = g.url;
+      document.getElementById("cancel-edit-gal").classList.remove("hidden");
+    };
+
+    document.getElementById("cancel-edit-gal").addEventListener("click", () => {
+      document.getElementById("admin-gallery-form").reset();
+      document.getElementById("edit-gal-id").value = "";
+      document.getElementById("cancel-edit-gal").classList.add("hidden");
+    });
+
+    // Video CRUD
+    document.getElementById("vid-type").addEventListener("change", (e) => {
+      const isLocal = e.target.value === "local";
+      document.getElementById("vid-url-group").classList.toggle("hidden", isLocal);
+      document.getElementById("vid-file-group").classList.toggle("hidden", !isLocal);
+    });
+
+    document.getElementById("admin-video-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const title = document.getElementById("vid-title").value.trim();
+      const type = document.getElementById("vid-type").value;
+      const desc = document.getElementById("vid-desc").value.trim();
+      let url = document.getElementById("vid-url").value.trim();
+
+      if (type === "local") {
+        const file = document.getElementById("vid-local-file").files[0];
+        if (!file) return showToast("Pilih file video lokal!", "error");
+        const id = `vid-local-${Date.now()}`;
+        state.videos.unshift({ id, title, type, url: URL.createObjectURL(file), desc });
+        state.activeVideoId = id;
+        refreshAllViews();
+        e.target.reset();
+        return showToast("Video lokal ditambahkan!", "success");
+      }
+
+      if (!url) return showToast("Masukkan tautan video!", "error");
+      const id = `vid-${Date.now()}`;
+      await saveRecord("videos", id, { id, title, type, url, desc });
+      state.activeVideoId = id;
+      e.target.reset();
+      showToast("Video berhasil disimpan ke Cloud!", "success");
+    });
+
+    // Awards CRUD
+    document.getElementById("admin-award-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const editId = document.getElementById("edit-award-id").value;
+      const id = editId || `aw-${Date.now()}`;
+      const category = document.getElementById("award-cat").value.trim();
+      const winner = document.getElementById("award-winner").value.trim();
+      const desc = document.getElementById("award-desc").value.trim();
+
+      await saveRecord("awards", id, { id, category, winner, desc });
+      e.target.reset();
+      document.getElementById("edit-award-id").value = "";
+      document.getElementById("cancel-edit-award").classList.add("hidden");
+      showToast("Angkatan Award berhasil disimpan!", "success");
+    });
+
+    window.editAward = function(id) {
+      const a = state.awards.find(item => item.id === id);
+      if (!a) return;
+      document.getElementById("edit-award-id").value = a.id;
+      document.getElementById("award-cat").value = a.category;
+      document.getElementById("award-winner").value = a.winner;
+      document.getElementById("award-desc").value = a.desc;
+      document.getElementById("cancel-edit-award").classList.remove("hidden");
+    };
+
+    document.getElementById("cancel-edit-award").addEventListener("click", () => {
+      document.getElementById("admin-award-form").reset();
+      document.getElementById("edit-award-id").value = "";
+      document.getElementById("cancel-edit-award").classList.add("hidden");
+    });
+
+    // =========================================================================
+    // 10. LIVE COUNTDOWN, COUNTERS, PARTICLE CANVAS & AUDIO SYNTH
+    // =========================================================================
+    function updateCountdown() {
+      const targetStr = state.settings.countdownTarget || "2026-06-20T18:30";
+      const targetDate = new Date(targetStr).getTime();
+      const diff = targetDate - Date.now();
+
+      if (!isNaN(targetDate)) {
+        document.getElementById("countdown-date-badge").textContent =
+          new Date(targetDate).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }) + " WIB";
+      }
+
+      if (isNaN(targetDate) || diff <= 0) {
+        ["cd-days", "cd-hours", "cd-minutes", "cd-seconds"].forEach(id => document.getElementById(id).textContent = "00");
+        return;
+      }
+
+      document.getElementById("cd-days").textContent = String(Math.floor(diff / 86400000)).padStart(2, "0");
+      document.getElementById("cd-hours").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+      document.getElementById("cd-minutes").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+      document.getElementById("cd-seconds").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+    }
+    setInterval(updateCountdown, 1000);
+
+    function runStatCounters() {
+      document.querySelectorAll(".stat-counter").forEach(counter => {
+        const target = parseInt(counter.dataset.target, 10);
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 40));
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            counter.textContent = target;
+            clearInterval(timer);
+          } else {
+            counter.textContent = current;
+          }
+        }, 28);
+      });
+    }
+
+    function initConstellationCanvas() {
+      const canvas = document.getElementById("bg-canvas");
+      const ctx = canvas.getContext("2d");
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      const mouse = { x: width / 2, y: height / 2, active: false };
+      const count = Math.min(75, Math.floor((width * height) / 16000));
+      const particles = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        r: Math.random() * 1.8 + 0.9,
+        color: Math.random() > 0.5 ? "rgba(56, 189, 248, 0.8)" : "rgba(244, 114, 182, 0.75)"
+      }));
+
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          if (mouse.active) {
+            const dist = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+            if (dist < 150) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(56, 189, 248, ${0.3 * (1 - dist / 150)})`;
+              ctx.lineWidth = 1;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.stroke();
+            }
+          }
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(167, 139, 250, ${0.22 * (1 - dist / 120)})`;
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+
+          ctx.beginPath();
+          ctx.fillStyle = p.color;
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    function attachTiltListeners() {
+      document.querySelectorAll(".tilt-card").forEach(card => {
+        if (card.dataset.tiltBound) return;
+        card.dataset.tiltBound = "true";
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const rotateX = (((e.clientY - rect.top) - rect.height / 2) / (rect.height / 2)) * -4.5;
+          const rotateY = (((e.clientX - rect.left) - rect.width / 2) / (rect.width / 2)) * 4.5;
+          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+        });
+      });
+    }
+
+    // Floating Music Player Synth
+    let audioCtx = null;
+    let isPlaying = false;
+    let musicInterval = null;
+    let noteIdx = 0;
+    const notes = [261.63, 329.63, 392.00, 493.88, 523.25, 493.88, 392.00, 329.63, 220.00, 261.63, 329.63, 392.00, 440.00, 392.00, 329.63, 261.63];
+
+    function playNote(freq) {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.06, now + 0.07);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.72);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.75);
+    }
+
+    document.getElementById("music-toggle-btn").addEventListener("click", () => {
+      const icon = document.getElementById("music-icon");
+      const eq = document.getElementById("music-eq");
+      const status = document.getElementById("music-status-text");
+
+      if (!isPlaying) {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        isPlaying = true;
+        icon.className = "fa-solid fa-pause text-sm";
+        eq.classList.add("is-playing");
+        status.textContent = "Playing • Kenangan Kelas 9";
+        playNote(notes[noteIdx++ % notes.length]);
+        musicInterval = setInterval(() => playNote(notes[noteIdx++ % notes.length]), 430);
+      } else {
+        isPlaying = false;
+        clearInterval(musicInterval);
+        icon.className = "fa-solid fa-play text-sm ml-0.5";
+        eq.classList.remove("is-playing");
+        status.textContent = "Paused • Klik untuk lanjut";
+      }
+    });
+
+    function escapeHTML(str) {
+      if (str === null || str === undefined) return "";
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+    function escapeAttr(str) {
+      return escapeHTML(str).replace(/\\/g, "\\\\");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initConstellationCanvas();
+      attachTiltListeners();
+      refreshAllViews();
+      updateCountdown();
+      runStatCounters();
+      initCloud();
+    });
+  </script>
+</body>
+</html>
